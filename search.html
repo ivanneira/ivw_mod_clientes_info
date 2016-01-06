@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head lang="es">
+<!doctype html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <title>Busqueda</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Busqueda y edición</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
 </head>
+
 <body>
-    Busqueda de clientes
+<div class="container-full">
+
+    <div class="row">
+
+        <div class="col-lg-12 text-center v-center">
+
+            <h2></h2>
+            <br>
+            <form class="col-lg-12">
+                <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="Ingrese nombre, parte del nombre, código o dirección">
+                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">-></button></span>
+                </div>
+            </form>
+        </div>
+
+    </div> <!-- /row -->
+
+    <div class="container" id="results" hidden="hidden">
+        <div>ejemplo</div>
+    </div>
+
+</div> <!-- /container full -->
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $("#btn_search_box").click(function(){
+        alert("estas buscando como chango, intente nuevamente mas tarde");
+        $("#results").show();
+    });
+</script>
 </body>
-</html>

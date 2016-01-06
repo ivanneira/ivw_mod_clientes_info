@@ -71,9 +71,19 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
+        //redirección de los botones de navegación lateral
         $("#btn_search").click(function(){
-            window.location.href ="search.html";
+            $("#main").load("search.html");
         });
+        $("#btn_add").click(function(){
+            $("#main").load("add.html");
+        });
+        $("#btn_remove").click(function(){
+            $("#main").load("remove.html");
+        });
+
     </script>
+
+
 </body>
 </html>
