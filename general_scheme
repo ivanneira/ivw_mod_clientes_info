@@ -1,0 +1,13 @@
+ivw_mod_clientes_info{
+
+    inicio: index.php{
+
+        busqueda{
+            mostrar
+            editar
+        }
+
+        agregar
+        eliminar
+    }
+}

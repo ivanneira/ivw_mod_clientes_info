@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Agregar cliente</title>
-    <script src="jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div>Agregar cliente</div>
