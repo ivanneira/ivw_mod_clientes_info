@@ -6,15 +6,22 @@
  * Time: 4:32
  */
 
+if (isset($_POST["query"])){
+    $query = $_POST["query"];
+
+    var_dump($query);
+
+}else echo "no se trajo ninguna string";
+
+
 ?>
 
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Buscar cliente</title>
 </head>
 <body>
-    buscar cliente
+    Cliente buscado
 </body>
 </html>

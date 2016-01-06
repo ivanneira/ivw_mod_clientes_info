@@ -41,8 +41,19 @@
 
 <script>
     $("#btn_search_box").click(function(){
-        alert("estas buscando como chango, intente nuevamente mas tarde");
-        $("#results").show();
+
+
+        //$("#results").load("search.php");
+        $.post("search.php",);
     });
+
+        $("#results").show();
+        $("#btn_search_box").click(function(){
+            $.post("search.php",
+                    {
+                        query: "stringdebusqueda",
+                    });
+        });
+
 </script>
 </body>
