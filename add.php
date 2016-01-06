@@ -12,8 +12,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Agregar cliente</title>
+    <script src="jquery-2.1.4.min.js" type="text/javascript"></script>
 </head>
 <body>
-    agregar cliente
+    <div>Agregar cliente</div>
+    <div id="container">
+        <input type="text" class="dataInput"/>
+
+        <button id="add_field">agregar campo</button>
+
+        <script>
+            $("#add_field").click(function(){
+
+            });
+        </script>
+        <button>terminar</button>
+    </div>
 </body>
 </html>

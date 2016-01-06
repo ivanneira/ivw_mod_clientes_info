@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <title>Información de clientes</title>
 
-    <script src="jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="jquery-2.1.4.min.js" type="text/javascript"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
