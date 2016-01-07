@@ -27,7 +27,7 @@
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="icon-reorder"></i>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 Clientes
             </a>
         </div>

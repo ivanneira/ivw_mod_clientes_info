@@ -22,7 +22,7 @@
             <br>
             <form class="col-lg-12">
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="Ingrese nombre, parte del nombre, código o dirección">
+                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="Ingrese nombre, parte del nombre, código o dirección" id="inp_search_box">
                     <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">-></button></span>
                 </div>
             </form>
@@ -30,7 +30,7 @@
 
     </div> <!-- /row- -->
 
-    <div class="container" id="results" hidden="hidden">
+    <div class="container" id="results">
         <div>ejemplo</div>
     </div>
 
@@ -40,20 +40,17 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script>
+    var searchString = "";
+
     $("#btn_search_box").click(function(){
+        alert("se presiona boton");
+        searchString = $("#inp_search_box").val();
 
-
-        //$("#results").load("search.php");
-        $.post("search.php",);
+        $.post("search.php",
+                {
+                    query: searchString
+                });
     });
-
-        $("#results").show();
-        $("#btn_search_box").click(function(){
-            $.post("search.php",
-                    {
-                        query: "stringdebusqueda",
-                    });
-        });
 
 </script>
 </body>
