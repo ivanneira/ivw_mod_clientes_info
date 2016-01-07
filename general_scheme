@@ -1,5 +1,16 @@
 ivw_mod_clientes_info{
 
+    couchdb database = clients{
+        //campos obligatorios
+        code    //codigo de pago, limite de 9999 clientes
+        name    //nombre del titular
+        ip      //dirección ip asignada
+        address //dirección de la instalacion
+        tel     /teléfono de contacto
+
+         //se pueden agregar hasta 100 campos adicionaless
+    }
+
     inicio: index.php{
 
         busqueda: search.php{

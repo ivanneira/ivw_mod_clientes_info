@@ -16,19 +16,10 @@ if (isset($_GET['query'])){
 function retrieveData(){
     global $query;
 
-    print(
-        "<div>".$query."</div></br>"
-    );
-    print(
-        "<div>".$query."</div></br>"
-    );
-    print(
-        "<div>".$query."</div></br>"
-    );
-    print(
-        "<div>".$query."</div></br>"
-    );
+
 }
+
+
 
 ?>
 
