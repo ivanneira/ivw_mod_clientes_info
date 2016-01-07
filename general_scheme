@@ -25,5 +25,6 @@ ivw_mod_clientes_info{
     errores{
 
         error01: no llega el post o get.
+        error02: no se pudo acceder a la base de datos.
     }
 }

@@ -16,19 +16,13 @@ if (isset($_GET['query'])){
 function retrieveData(){
     global $query;
 
+    $searchClient = new db_connection();
 
+    $response = $searchClient->search($query);
+
+    print("<div>".$response."</div>");
 }
 
 
 
 ?>
-
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-
-</body>
-</html>
