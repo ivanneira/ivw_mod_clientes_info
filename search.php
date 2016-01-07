@@ -9,10 +9,26 @@
 if (isset($_GET['query'])){
     $query = $_GET['query'];
 
-    var_dump($query);
+    retrieveData();
 
-}else echo "no se trajo ninguna stringgg";
+}else echo "error01";
 
+function retrieveData(){
+    global $query;
+
+    print(
+        "<div>".$query."</div></br>"
+    );
+    print(
+        "<div>".$query."</div></br>"
+    );
+    print(
+        "<div>".$query."</div></br>"
+    );
+    print(
+        "<div>".$query."</div></br>"
+    );
+}
 
 ?>
 
@@ -22,6 +38,6 @@ if (isset($_GET['query'])){
     <meta charset="UTF-8">
 </head>
 <body>
-    Cliente buscado
+
 </body>
 </html>

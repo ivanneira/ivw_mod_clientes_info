@@ -2,12 +2,17 @@ ivw_mod_clientes_info{
 
     inicio: index.php{
 
-        busqueda{
+        busqueda: search.php{
             mostrar
             editar
         }
 
-        agregar
-        eliminar
+        agregar: add.php
+        eliminar: remove.php
+    }
+
+    errores{
+
+        error01: no llega el post o get.
     }
 }

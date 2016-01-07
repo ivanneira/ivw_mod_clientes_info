@@ -22,7 +22,7 @@
             <br>
             <form class="col-lg-12">
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="Ingrese nombre, parte del nombre, código o dirección" id="inp_search_box">
+                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="nombre,código o dirección" id="inp_search_box">
                     <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">></button></span>
                 </div>
             </form>
@@ -45,7 +45,17 @@
 
         var searchString = $("#inp_search_box").val();
 
-        $("#results").load("search.php?query=".concat(searchString));
+        if(searchString!=''){
+            $("#results").load("search.php?query=".concat(searchString));
+        }else{
+            $("#results").text("No se ingresaron datos");
+            $("#results").css({
+                "background":"lightcoral",
+                "text-align":"center"
+
+                    });
+            $("#results").fadeOut(0).delay(200).fadeIn(100);
+        }
     });
 
 </script>
