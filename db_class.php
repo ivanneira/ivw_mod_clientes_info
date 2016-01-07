@@ -7,5 +7,13 @@
  */
 
 
+class dbConnection{
+
+    function search(){
+
+
+    }
+
+}
 
 ?>

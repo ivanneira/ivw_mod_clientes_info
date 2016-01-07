@@ -16,7 +16,7 @@ if (isset($_GET['query'])){
 function retrieveData(){
     global $query;
 
-    $searchClient = new db_connection();
+    $searchClient = new dbConnection();
 
     $response = $searchClient->search($query);
 
