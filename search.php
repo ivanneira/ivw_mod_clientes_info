@@ -6,12 +6,12 @@
  * Time: 4:32
  */
 
-if (isset($_POST["query"])){
-    $query = $_POST["query"];
+if (isset($_GET['query'])){
+    $query = $_GET['query'];
 
     var_dump($query);
 
-}else echo "no se trajo ninguna string";
+}else echo "no se trajo ninguna stringgg";
 
 
 ?>

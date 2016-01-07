@@ -23,7 +23,7 @@
             <form class="col-lg-12">
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                     <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="Ingrese nombre, parte del nombre, código o dirección" id="inp_search_box">
-                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">-></button></span>
+                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">></button></span>
                 </div>
             </form>
         </div>
@@ -40,16 +40,12 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script>
-    var searchString = "";
 
     $("#btn_search_box").click(function(){
-        alert("se presiona boton");
-        searchString = $("#inp_search_box").val();
 
-        $.post("search.php",
-                {
-                    query: searchString
-                });
+        var searchString = $("#inp_search_box").val();
+
+        $("#results").load("search.php?query=".concat(searchString));
     });
 
 </script>
