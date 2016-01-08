@@ -22,7 +22,7 @@ function retrieveData(){
 
     $response = $searchClient->search($query);
 
-    print("<div>".$response."</div>");
+    print("<div>".var_dump($response)."</div></br>");
 }
 
 

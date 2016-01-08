@@ -1,5 +1,9 @@
 ivw_mod_clientes_info{
 
+    datos de conección: connection.php {
+        //datos de conección a la base de datos
+    }
+
     mondgoDB database = clients{
         collection: client{
             //campos obligatorios

@@ -5,12 +5,16 @@
  * Date: 06/01/2016
  * Time: 4:15
  */
+include_once "connection.php";
 
 try{
     $mongo = new MongoClient();
+    $db = $mongo->selectDB($dataBaseName);
+    $collection = $db->selectCollection($collectionName);
 
 }catch (Exception $e){
-    echo "error02".parse_str($e);
+    echo "error02";
+    var_dump($e);
 }
 
 class dbConnection{
@@ -18,10 +22,21 @@ class dbConnection{
     function search($query){
 
         global $mongo;
+        global $collection;
 
-        $mongo->close(true);
+        if($mongo){
+            $mongo->close(true);
+            try {
+                $cursor = $collection->find(array('$in' => array('name' => 'Cliente')));
+            }catch (Exception $e){
+                echo "error";
+                var_dump($e);
+            }
 
-        return "resulado";
+
+
+            return "resulado";
+        } else return "error02";
 
     }
 
