@@ -6,6 +6,8 @@
  * Time: 4:32
  */
 
+include_once 'db_class.php';
+
 if (isset($_GET['query'])){
     $query = $_GET['query'];
 
