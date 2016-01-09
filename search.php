@@ -22,7 +22,11 @@ function retrieveData(){
 
     $response = $searchClient->search($query);
 
-    print("<div>".var_dump($response)."</div></br>");
+    foreach($response as $document){
+        print("<div>".var_dump($document)."</div></br>");
+        print("<div id='gridFile'>".$document['name']."</div></br>");
+    }
+
 }
 
 

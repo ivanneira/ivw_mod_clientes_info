@@ -7,15 +7,20 @@
  */
 include_once "connection.php";
 
+// Clase MongoClient está obsoleta, en su lugar se usa mongodb driver manager
+// no se implementa por dificultad para instalarlo en xampp
+
+
 try{
     $mongo = new MongoClient();
     $db = $mongo->selectDB($dataBaseName);
     $collection = $db->selectCollection($collectionName);
 
-}catch (Exception $e){
+}catch (MongoConnectionException $e){
     echo "error02";
     var_dump($e);
 }
+
 
 class dbConnection{
 
@@ -24,18 +29,12 @@ class dbConnection{
         global $mongo;
         global $collection;
 
+        $cursor = $collection->find(array("name"=>"Cliente de Prueba"));
+
         if($mongo){
             $mongo->close(true);
-            try {
-                $cursor = $collection->find(array('$in' => array('name' => 'Cliente')));
-            }catch (Exception $e){
-                echo "error";
-                var_dump($e);
-            }
 
-
-
-            return "resulado";
+            return $cursor;
         } else return "error02";
 
     }
