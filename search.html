@@ -19,19 +19,20 @@
 
         <div class="col-lg-12 text-center v-center">
 
-            <div class="form-group input-group col-sm-offset-4  col-sm-4">
-                <label for="code_selection">Buscar por:</label>
-                <select class="form-control" id="code_selection">
-                    <option value="">todos</option>
-                    <option value="na">nombre</option>
-                    <option value="co">código</option>
-                    <option value="ip">ip</option>
-                    <option value="ad">dirección</option>
-                    <option value="te">teléfono</option>
-                </select>
-            </div>
+
 
             <form class="col-lg-12">
+                <div class="form-group input-group col-sm-offset-4  col-sm-4">
+                    <label for="code_selection">Buscar por:</label>
+                    <select class="form-control" id="code_selection">
+                        <option value="" class="code">todos</option>
+                        <option value="na" class="code">nombre</option>
+                        <option value="co" class="code">código</option>
+                        <option value="ip" class="code">ip</option>
+                        <option value="ad" class="code">dirección</option>
+                        <option value="te" class="code">teléfono</option>
+                    </select>
+                </div>
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                     <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="ingrese búsqueda" id="inp_search_box">
                     <span class="input-group-btn"><button class="btn btn-lg btn-default" type="button" id="btn_search_box">></button></span>
@@ -54,18 +55,26 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script>
+    $("#inp_search_box").focus();
 
+    /*
     $("#code_selection").click(function(){
-
          if($(this).val()=='') {
              $("#inp_search_box").val('');
          }else $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
     });
+    */
 
-    //arreglar cambio de foco al seleccionar
-    $("#inp_search_box").focus();
+    $("#code_selection").on('change',function(){
+        if($(this).val()=='') {
+            $("#inp_search_box").val('');
+        }else $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
 
-    $("#btn_search_box").click(function(){
+        $("#inp_search_box").focus();
+    });
+    //TODO: buscar al presionar Enter
+
+    function sendQuery(){
 
         var searchString = $("#inp_search_box").val();
 
@@ -81,7 +90,9 @@
 
             $("#results").fadeOut(0).delay(100).fadeIn(100);
         }
-    });
+    }
+
+    $("#btn_search_box").click(function(){sendQuery()});
 
 </script>
 </body>
