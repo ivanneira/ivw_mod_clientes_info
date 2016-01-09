@@ -18,7 +18,7 @@ try{
 
 }catch (MongoConnectionException $e){
     echo "error02";
-    var_dump($e);
+
 }
 
 
@@ -29,7 +29,7 @@ class dbConnection{
         global $mongo;
         global $collection;
 
-        $cursor = $collection->find(array("name"=>"Cliente de Prueba"));
+        $cursor = $collection->find(array('name'=>$query));
 
         if($mongo){
             $mongo->close(true);

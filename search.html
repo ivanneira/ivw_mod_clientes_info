@@ -45,8 +45,23 @@
 
         var searchString = $("#inp_search_box").val();
 
+
+
         if(searchString!=''){
-            $("#results").load("search.php?query=".concat(searchString));
+
+            /*
+            $("#results").load(searchString.concat("search.php?query=",searchString));
+            */
+
+            /*
+            $.get("search.php", {query:"searchString"},function(){
+                $("#results").html("search.php")
+            });
+            */
+            $.get("search.php", {query:searchString},function(external){
+                $("#results").html(external);
+            });
+            alert(searchString);
         }else{
             $("#results").text("No se ingresaron datos");
             $("#results").css({
