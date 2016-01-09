@@ -32,5 +32,7 @@ ivw_mod_clientes_info{
 
         error01: no llega el post o get.
         error02: no se pudo acceder a la base de datos.
+        error03: error en el cursor de la base de datos.
+        error04: query mal realizada al servidor.
     }
 }

@@ -29,8 +29,17 @@ class dbConnection{
         global $mongo;
         global $collection;
 
-        $cursor = $collection->find(array('name'=>$query));
+        //agregar array aca
+        $searchArray  = array('name' => array('$regex'=> new MongoRegex('/'.$query.'/i')) );
 
+        $cursor = '';
+
+        try {
+            $cursor = $collection->find($searchArray);
+        }catch (MongoException $e){
+            echo 'error04';
+            var_dump($e);
+        }
         if($mongo){
             $mongo->close(true);
 

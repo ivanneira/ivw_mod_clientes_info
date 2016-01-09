@@ -38,10 +38,12 @@ function retrieveData(){
 
     ");
 
+    try {
 
-    foreach($response as $document){
 
-        print("<tr>");
+        foreach($response as $document){
+
+            print("<tr>");
 
             print("<td>".$document['code'] ."</td>");
             print("<td>".$document['name'] ."</td>");
@@ -49,19 +51,30 @@ function retrieveData(){
             print("<td>".$document['address']['street'] ."</td>");
             print("<td>".$document['tel'] ."</td>");
 
-        print("</tr>");
+            print("</tr>");
 
 
-        /*
-        print("<div id='gridFile'>".$document['code']."</div>");
-        print("<div id='gridFile'>".$document['name']."</div>");
-        print("<div id='gridFile'>".$document['ip']."</div>");
-        print("<div id='gridFile'>".$document['address']['street']."</div>");
-        print("<div id='gridFile'>".$document['address']['city']."</div>");
-        print("<div id='gridFile'>".$document['tel']."</div></br>");
-        */
+            /*
+            print("<div id='gridFile'>".$document['code']."</div>");
+            print("<div id='gridFile'>".$document['name']."</div>");
+            print("<div id='gridFile'>".$document['ip']."</div>");
+            print("<div id='gridFile'>".$document['address']['street']."</div>");
+            print("<div id='gridFile'>".$document['address']['city']."</div>");
+            print("<div id='gridFile'>".$document['tel']."</div></br>");
+            */
 
+        }
+
+
+
+
+
+
+    }catch(MongoCursorException $e){
+        echo "error03";
+        var_dump($e);
     }
+
 
     print("
         </tbody>
