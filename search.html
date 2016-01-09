@@ -66,10 +66,14 @@
     */
 
     $("#code_selection").on('change',function(){
+
         if($(this).val()=='') {
             $("#inp_search_box").val('');
-        }else $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
-
+        }else if($("#inp_search_box").val()==''){
+            $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
+        }else {
+            $("#inp_search_box").val(":" + $("#code_selection").val() + " " + $("#inp_search_box").val());
+        }
         $("#inp_search_box").focus();
     });
     //TODO: buscar al presionar Enter
