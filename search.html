@@ -14,60 +14,71 @@
 <body>
 <div class="container-full">
 
+
     <div class="row">
 
         <div class="col-lg-12 text-center v-center">
 
-            <h2></h2>
-            <br>
+            <div class="form-group input-group col-sm-offset-4  col-sm-4">
+                <label for="code_selection">Buscar por:</label>
+                <select class="form-control" id="code_selection">
+                    <option value="">todos</option>
+                    <option value="na">nombre</option>
+                    <option value="co">código</option>
+                    <option value="ip">ip</option>
+                    <option value="ad">dirección</option>
+                    <option value="te">teléfono</option>
+                </select>
+            </div>
+
             <form class="col-lg-12">
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="nombre,código o dirección" id="inp_search_box">
-                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" id="btn_search_box">></button></span>
+                    <input type="text" class="center-block form-control input-lg" title="Busqueda" placeholder="ingrese búsqueda" id="inp_search_box">
+                    <span class="input-group-btn"><button class="btn btn-lg btn-default" type="button" id="btn_search_box">></button></span>
                 </div>
             </form>
         </div>
 
-    </div> <!-- /row- -->
+    </div>
+
+    <br/>
+
 
     <div class="container" id="results">
 
     </div>
 
-</div> <!-- /container full -->
+</div>
 
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <script>
 
+    $("#code_selection").click(function(){
+
+         if($(this).val()=='') {
+             $("#inp_search_box").val('');
+         }else $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
+    });
+
+    //arreglar cambio de foco al seleccionar
+    $("#inp_search_box").focus();
+
     $("#btn_search_box").click(function(){
 
         var searchString = $("#inp_search_box").val();
 
-
-
         if(searchString!=''){
 
-            /*
-            $("#results").load(searchString.concat("search.php?query=",searchString));
-            */
 
-            /*
-            $.get("search.php", {query:"searchString"},function(){
-                $("#results").html("search.php")
-            });
-            */
             $.get("search.php", {query:searchString},function(external){
                 $("#results").html(external);
             });
         }else{
-            $("#results").text("No se ingresaron datos");
-            $("#results").css({
-                "background":"lightcoral",
-                "text-align":"center"
 
-                    });
+            $("#results").html("<p class='text-center bg-danger'>no se ingresaron datos</p>");
+
             $("#results").fadeOut(0).delay(100).fadeIn(100);
         }
     });
