@@ -15,13 +15,14 @@ if (isset($_GET["query"])){
 }else echo "error01";
 
 //tratar la string para detectar y separar la query
-
-function retrieveData($searchCode,$query){
+$code= '';
+function retrieveData(){
     global $query;
+    global $code;
 
     $searchClient = new dbConnection();
 
-    $response = $searchClient->search($query);
+    $response = $searchClient->search($code,$query);
 
     //¿sería mejor incluirla en la clase de base de datos?
     //insertar validacion de llegada
