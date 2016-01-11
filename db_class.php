@@ -24,7 +24,7 @@ try{
 
 class dbConnection{
 
-    function search($query){
+    function search($searchCode,$query){
 
         global $mongo;
         global $collection;

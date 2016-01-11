@@ -14,7 +14,9 @@ if (isset($_GET["query"])){
 
 }else echo "error01";
 
-function retrieveData(){
+//tratar la string para detectar y separar la query
+
+function retrieveData($searchCode,$query){
     global $query;
 
     $searchClient = new dbConnection();
