@@ -72,9 +72,13 @@
             });
         }else{
 
+            //revisar: a veces entra aca dos veces cuando se busca con enter y esta vacio
+            //puede que no importe, porque si esta llegando significa que no hay busqueda
+
             $("#results").html("<br/><br/><p class='text-center bg-danger'>no se ingresaron datos</p>");
 
             $("#results").fadeOut(0).delay(100).fadeIn(100);
+
         }
     }
 
