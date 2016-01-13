@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Información de clientes</title>
+    <title>clientes</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -38,7 +38,7 @@
         </button>
     </div>
 
-    <p class="navbar-brand">clientes</p>
+    <p class="navbar-brand">menú clientes</p>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
