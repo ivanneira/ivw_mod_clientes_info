@@ -57,33 +57,18 @@
 <script>
     $("#inp_search_box").focus();
 
-    /*
-    $("#code_selection").click(function(){
-         if($(this).val()=='') {
-             $("#inp_search_box").val('');
-         }else $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
-    });
-    */
+    $("#code_selection").on('change',function() {
 
-    $("#code_selection").on('change',function(){
-        if($(this).val()=='') {
-            $("#inp_search_box").val('');
-        }else if($("#inp_search_box").val()==''){
-            $("#inp_search_box").val(":" + $("#code_selection").val() + " ");
-
-        }else {
-
-            if($("#inp_search_box").val().charAt(0)!=':'){
-                $("#inp_search_box").val(":" + $("#code_selection").val() + " " +  $("#inp_search_box").val());
-            }else {
-                console.log("acá debería reemplazar");
-                $("#inp_search_box").val($("#inp_search_box").val().substring(4));
-                $("#inp_search_box").val(":" + $("#code_selection").val() + " " +  $("#inp_search_box").val());
-            }
-
+        //reemplazo de codigo en la string
+        if (($("#inp_search_box").val().charAt(0) != ':')||(($("#inp_search_box").val().charAt(0) == ''))) {
+            $("#inp_search_box").val(":" + $("#code_selection").val() + " " + $("#inp_search_box").val());
+        } else {
+            $("#inp_search_box").val($("#inp_search_box").val().substring(4));
+            $("#inp_search_box").val(":" + $("#code_selection").val() + " " + $("#inp_search_box").val());
         }
 
         $("#inp_search_box").focus();
+
     });
     //TODO: buscar al presionar Enter
 

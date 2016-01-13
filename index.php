@@ -23,6 +23,39 @@
 
 <body>
 
+<div class="page-header">
+    <h2>IVW <small>gestión de clientes</small></h2>
+</div>
+
+<nav class="navbar navbar-default">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Cambiar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <p class="navbar-brand">clientes</p>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li id="btn_menu_search"> <a href="#">buscar</a></li>
+            <li id="btn_menu_add"> <a href="#">agregar</a></li>
+            <li id="btn_menu_remove"> <a href="#">borrar</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="ajax_main_container"></div>
+</div>
+
+<!--
+<body>
+
     <div id="header" class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -67,11 +100,37 @@
             </div>
         </div>
     </div>
+</body>
+
+    -->
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
     <script>
+
+        $("#btn_menu_search").click(function(){
+
+            $.get("search.html",function(data){
+               $("#ajax_main_container").html(data);
+            });
+        });
+
+        $("#btn_menu_add").click(function(){
+
+            $.get("add.html",function(data){
+                $("#ajax_main_container").html(data);
+            });
+        });
+
+        $("#btn_menu_remove").click(function(){
+
+            $.get("remove.html",function(data){
+                $("#ajax_main_container").html(data);
+            });
+        });
+
+        /*
         //redirección de los botones de navegación lateral
         $("#btn_search").click(function(){
             $("#main").load("search.html");
@@ -82,7 +141,7 @@
         $("#btn_remove").click(function(){
             $("#main").load("remove.html");
         });
-
+        */
     </script>
 
 

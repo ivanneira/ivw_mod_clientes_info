@@ -16,16 +16,34 @@ if (isset($_GET["query"])){
 
 //tratar la string para detectar y separar la query
 $code= '';
+
+function prepareQuery($query){
+
+    $position = strpos($query,':');
+
+    if($position==='0'){
+        echo "tiene código";
+
+
+
+    }else echo "choronga";
+
+}
+
+prepareQuery($query);
+
 function retrieveData(){
     global $query;
     global $code;
 
+    //¿sería mejor incluirla en la clase de base de datos?
+    //insertar validacion de llegada
+
+
+
     $searchClient = new dbConnection();
 
     $response = $searchClient->search($code,$query);
-
-    //¿sería mejor incluirla en la clase de base de datos?
-    //insertar validacion de llegada
 
     print("
     <table class='table table-striped table-bordered table-hover table-condensed' >

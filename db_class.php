@@ -29,7 +29,15 @@ class dbConnection{
         global $mongo;
         global $collection;
 
-        //agregar array aca
+        $searchArray  = array('name' => array('$regex'=> new MongoRegex('/'.$query.'/i')) );
+
+        /*
+        switch($searchArray){
+            case '': $searchArray  = array('name' => array('$regex'=> new MongoRegex('/'.$query.'/i')) );
+                break;
+
+        }
+*/
         $searchArray  = array('name' => array('$regex'=> new MongoRegex('/'.$query.'/i')) );
 
         $cursor = '';
