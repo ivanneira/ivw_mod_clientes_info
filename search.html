@@ -4,25 +4,23 @@
 <body>
 
 <!-- dropdown -->
-<div class="col-md-12 col-sm-6">
-    <div class="btn-group btn-block">
-        <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
-              <span>
-                buscar por
-            </span>
-            <span class="pull-right"><span class="caret"></span></span>
-        </button>
+    <div class="col-md-12 col-sm-6">
+        <div class="btn-group btn-block">
+            <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+                  <span>buscar por</span>
+                <span class="pull-right"><span class="caret"></span></span>
+            </button>
 
-        <ul class="dropdown-menu btn-block">
-            <li><a href="#">todos</a></li>
-            <li><a href="#">nombre</a></li>
-            <li><a href="#">código</a></li>
-            <li><a href="#">ip</a></li>
-            <li><a href="#">dirección</a></li>
-            <li><a href="#">teléfono</a></li>
-        </ul>
+            <ul class="dropdown-menu btn-block">
+                <li><a href="#" class="code_selection" id="">todos</a></li>
+                <li><a href="#" class="code_selection" id="na">nombre</a></li>
+                <li><a href="#" class="code_selection" id="co">código</a></li>
+                <li><a href="#" class="code_selection" id="ip">ip</a></li>
+                <li><a href="#" class="code_selection" id="ad">dirección</a></li>
+                <li><a href="#" class="code_selection" id="te">teléfono</a></li>
+            </ul>
+        </div>
     </div>
-</div>
 
     <!--input de búsqueda-->
     <div class="col-md-12 col-sm-6">
@@ -37,24 +35,24 @@
     <br/>
 
     <!-- Los resultados se muestran acá -->
-    <div class="container" id="results">
+    <div id="results">
 
     </div>
-
-</div>
 
 
 <script>
     $("#inp_search_box").focus();
 
-    $("#code_selection").on('change',function() {
+    $(".code_selection").click(function(){
+        var code = $(this).attr("id");
 
-        //reemplazo de codigo en la string
+        //reemplazo de codigo en la string, no optimizar, anda.
+
         if (($("#inp_search_box").val().charAt(0) != ':')||(($("#inp_search_box").val().charAt(0) == ''))) {
-            $("#inp_search_box").val(":" + $("#code_selection").val() + " " + $("#inp_search_box").val());
+            $("#inp_search_box").val(":" + code + " " + $("#inp_search_box").val());
         } else {
             $("#inp_search_box").val($("#inp_search_box").val().substring(4));
-            $("#inp_search_box").val(":" + $("#code_selection").val() + " " + $("#inp_search_box").val());
+            $("#inp_search_box").val(":" + code + " " + $("#inp_search_box").val());
         }
 
         $("#inp_search_box").focus();
