@@ -27,7 +27,7 @@
         <form>
             <div class="input-group">
                 <input type="text" class="form-control" title="Busqueda" placeholder="ingrese búsqueda" id="inp_search_box">
-                <span class="input-group-btn"><button class="btn btn-default" type="button" id="btn_search_box">></button></span>
+                <span class="input-group-btn"><button class="btn btn-default" type="button" id="btn_search_box"> <span class="glyphicon glyphicon-search"></span></button></span>
             </div>
         </form>
     </div>
@@ -35,10 +35,11 @@
     <br/>
 
     <!-- Los resultados se muestran acá -->
+<div class="row top-buffer">
     <div id="results">
 
     </div>
-
+</div>
 
 <script>
     $("#inp_search_box").focus();
@@ -71,7 +72,7 @@
             });
         }else{
 
-            $("#results").html("<p class='text-center bg-danger'>no se ingresaron datos</p>");
+            $("#results").html("<br/><br/><p class='text-center bg-danger'>no se ingresaron datos</p>");
 
             $("#results").fadeOut(0).delay(100).fadeIn(100);
         }
@@ -81,7 +82,6 @@
 
     $(document).keypress(function(event){
         if(event.which == 13){
-            console.log("enter apretado");
             sendQuery();
         }
     });
