@@ -11,13 +11,13 @@
                 <span class="pull-right"><span class="caret"></span></span>
             </button>
 
-            <ul class="dropdown-menu btn-block">
-                <li><a href="#" class="code_selection" id="">todos</a></li>
-                <li><a href="#" class="code_selection" id="na">nombre</a></li>
-                <li><a href="#" class="code_selection" id="co">código</a></li>
-                <li><a href="#" class="code_selection" id="ip">ip</a></li>
-                <li><a href="#" class="code_selection" id="ad">dirección</a></li>
-                <li><a href="#" class="code_selection" id="te">teléfono</a></li>
+            <ul class="dropdown-menu btn-block" id="code_selection">
+                <li><button class="btn_menu btn-block" value="">todos</button></li>
+                <li><button class="btn_menu btn-block" value="na">nombre</button></li>
+                <li><button class="btn_menu btn-block" value="co">código</button></li>
+                <li><button class="btn_menu btn-block" value="ip">ip</button></li>
+                <li><button class="btn_menu btn-block" value="ad">dirección</button></li>
+                <li><button class="btn_menu btn-block" value="te">teléfono</button></li>
             </ul>
         </div>
     </div>
@@ -36,57 +36,64 @@
 
     <!-- Los resultados se muestran acá -->
 <div class="row top-buffer">
+    <br/>
+    <br/>
     <div id="results">
 
     </div>
 </div>
 
 <script>
+
     $("#inp_search_box").focus();
 
-    $(".code_selection").click(function(){
-        var code = $(this).attr("id");
-
-        //reemplazo de codigo en la string, no optimizar, anda.
-
-        if (($("#inp_search_box").val().charAt(0) != ':')||(($("#inp_search_box").val().charAt(0) == ''))) {
-            $("#inp_search_box").val(":" + code + " " + $("#inp_search_box").val());
-        } else {
-            $("#inp_search_box").val($("#inp_search_box").val().substring(4));
-            $("#inp_search_box").val(":" + code + " " + $("#inp_search_box").val());
-        }
-
-        $("#inp_search_box").focus();
-
-    });
+    $("#btn_search_box").on('click',function(){sendQuery();});
 
     function sendQuery(){
+        if($("#inp_search_box").val() == ""){
 
-        var searchString = $("#inp_search_box").val();
-
-        if(searchString!=''){
-
-
-            $.get("search.php", {query:searchString},function(external){
-                $("#results").html(external);
-            });
-        }else{
-
-            //revisar: a veces entra aca dos veces cuando se busca con enter y esta vacio
-            //puede que no importe, porque si esta llegando significa que no hay busqueda
-
-            $("#results").html("<br/><br/><p class='text-center bg-danger'>no se ingresaron datos</p>");
+            $("#results").html("<p class='text-center bg-danger'>no se ingresaron datos</p>");
 
             $("#results").fadeOut(0).delay(100).fadeIn(100);
+        }else{
 
+            $("#results").html("");
+            //enviar query
+            $.get("search.php", {query:$("#inp_search_box").val()},function(external){
+                $("#results").html(external);
+            });
         }
     }
+        $(".btn_menu").click(function(){
 
-    $("#btn_search_box").click(function(){sendQuery()});
+            var codeSelected = $(this).attr("value");
+
+            if($("#inp_search_box") == ""){
+                if(codeSelected== ""){
+
+                }else{
+                    $("#inp_search_box").val(":" + codeSelected + " ");
+                }
+            }else{
+                if( $("#inp_search_box").val().charAt(0)==':'){
+                    //borra caracteres hasta el primer espacio
+                    $("#inp_search_box").val($("#inp_search_box").val().substring($("#inp_search_box").val().indexOf(' ')).trim());
+                    $("#inp_search_box").val(":" + codeSelected + " " + $("#inp_search_box").val());
+                }else{
+                    $("#inp_search_box").val(":" + codeSelected + " " + $("#inp_search_box").val());
+                }
+            }
+
+            $("#inp_search_box").focus();
+
+        });
+
 
     $(document).keypress(function(event){
         if(event.which == 13){
-            sendQuery();
+            $("#inp_search_box").focus();
+            console.log("espere un momento...");
+            $("#btn_search_box").trigger('click');
         }
     });
 

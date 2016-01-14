@@ -13,3 +13,13 @@
     text-align: center;
     transform: translate(-50%, 0);
 }
+
+.btn_menu {
+    background: transparent;
+    border: hidden;
+}
+
+.btn_menu:hover{
+    background: rgba(0,0,255,0.1);
+
+}
