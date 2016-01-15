@@ -19,14 +19,14 @@ $code= '';
 
 function prepareQuery($query){
 
-    $position = strpos($query,':');
-
-    if($position==='0'){
+    //en caso de que tenga código
+    if(substr($query,0,1) == ':'){
         echo "tiene código";
 
+        $codeExploded = explode(' ',$query);
 
-
-    }else echo "choronga";
+    //en caso de que NO tenga código
+    }else echo "no tiene coddigo";
 
 }
 
