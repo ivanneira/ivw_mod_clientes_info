@@ -16,21 +16,19 @@ if (isset($_GET["query"])){
 
 //tratar la string para detectar y separar la query
 $code= '';
-
-function prepareQuery($query){
+$searchTerms = '';
+$result = false;
 
     //en caso de que tenga código
     if(substr($query,0,1) == ':'){
-        echo "tiene código";
 
         $codeExploded = explode(' ',$query);
 
-    //en caso de que NO tenga código
-    }else echo "no tiene coddigo";
+        $code = $codeExploded[0];
 
-}
+        $searchTerms = array_shift($codeExploded);
+    }
 
-prepareQuery($query);
 
 function retrieveData(){
     global $query;
@@ -73,16 +71,6 @@ function retrieveData(){
             print("<td>".$document['tel'] ."</td>");
 
             print("</tr>");
-
-
-            /*
-            print("<div id='gridFile'>".$document['code']."</div>");
-            print("<div id='gridFile'>".$document['name']."</div>");
-            print("<div id='gridFile'>".$document['ip']."</div>");
-            print("<div id='gridFile'>".$document['address']['street']."</div>");
-            print("<div id='gridFile'>".$document['address']['city']."</div>");
-            print("<div id='gridFile'>".$document['tel']."</div></br>");
-            */
 
         }
 
