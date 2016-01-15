@@ -4,10 +4,10 @@
 <body>
 
 <!-- dropdown -->
-    <div class="col-md-12 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="btn-group btn-block">
             <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
-                  <span>buscar por</span>
+                  <span>buscar por ...</span>
                 <span class="pull-right"><span class="caret"></span></span>
             </button>
 
@@ -23,7 +23,7 @@
     </div>
 
     <!--input de búsqueda-->
-    <div class="col-md-12 col-sm-6">
+    <div class="col-md-6 col-sm-12 col-lg-6 col-xs-12">
         <form>
             <div class="input-group">
                 <input type="text" class="form-control" title="Busqueda" placeholder="ingrese búsqueda" id="inp_search_box">
@@ -44,54 +44,63 @@
 </div>
 
 <script>
+        var searchBox = $("#inp_search_box");
 
-    $("#inp_search_box").focus();
+        searchBox.focus();
 
-    $("#btn_search_box").on('click',function(){sendQuery();});
+        $("#btn_search_box").on('click',function(){sendQuery();});
 
-    function sendQuery(){
-        if($("#inp_search_box").val() == ""){
+        function sendQuery(){
+            if(searchBox.val() == ""){
 
-            $("#results").html("<p class='text-center bg-danger'>no se ingresaron datos</p>");
+                $("#results").html("<p class='text-center bg-danger'>no se ingresaron datos</p>")
+                             .fadeOut(0).delay(100).fadeIn(100);
+            }else{
 
-            $("#results").fadeOut(0).delay(100).fadeIn(100);
-        }else{
-
-            $("#results").html("");
-            //enviar query
-            $.get("search.php", {query:$("#inp_search_box").val()},function(external){
-                $("#results").html(external);
-            });
+                $("#results").html("");
+                //enviar query
+                $.get("search.php", {query:searchBox.val()},function(external){
+                    $("#results").html(external);
+                });
+            }
         }
-    }
+
         $(".btn_menu").click(function(){
 
             var codeSelected = $(this).attr("value");
 
-            if($("#inp_search_box") == ""){
+
+            if(searchBox.val() == ""){
                 if(codeSelected== ""){
 
                 }else{
-                    $("#inp_search_box").val(":" + codeSelected + " ");
+                    searchBox.val(":" + codeSelected + " ");
                 }
             }else{
-                if( $("#inp_search_box").val().charAt(0)==':'){
-                    //borra caracteres hasta el primer espacio
-                    $("#inp_search_box").val($("#inp_search_box").val().substring($("#inp_search_box").val().indexOf(' ')).trim());
-                    $("#inp_search_box").val(":" + codeSelected + " " + $("#inp_search_box").val());
+                if( searchBox.val().charAt(0)==':'){
+
+                    searchBox.val(function (i,v) {
+                        var parcVal = v.substring(v.indexOf(' ')).trim();
+                        return ":" + codeSelected + " " + parcVal;
+                    });
+
                 }else{
-                    $("#inp_search_box").val(":" + codeSelected + " " + $("#inp_search_box").val());
+
+                    searchBox.val(function (i,v) {
+                        parcVal = v;
+                        return ":" + codeSelected + " " + parcVal;
+                    });
                 }
             }
 
-            $("#inp_search_box").focus();
+            searchBox.focus();
 
         });
 
 
     $(document).keypress(function(event){
         if(event.which == 13){
-            $("#inp_search_box").focus();
+            searchBox.focus();
             console.log("espere un momento...");
             $("#btn_search_box").trigger('click');
         }
