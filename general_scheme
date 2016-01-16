@@ -4,17 +4,39 @@ ivw_mod_clientes_info{
         //datos de conección a la base de datos
     }
 
-    mondgoDB database = clients{
-        collection: client{
-            //campos obligatorios
-            code    //codigo de pago, limite de 9999 clientes
-            name    //nombre del titular
-            ip      //dirección ip asignada
-            address //dirección de la instalacion
-            tel     /teléfono de contacto
+    MySql database = ar_ivw_mgmt{
 
-             //se pueden agregar hasta 100 campos adicionaless
-         }
+        table: client_info{
+               id_client_info: PK AI
+               name: varchar
+               status: int
+        }
+
+        table: code{
+               id_client_code: PK
+               code: varchar
+        }
+
+        table: name{
+               id_client_name: PK
+               name: varchar
+        }
+
+        table: ip{
+               id_client_ip: PK
+               ip: varchar
+        }
+
+        table: address{
+               id_client_address: PK
+               address: varchar
+        }
+
+        table: tel{
+               id_client_tel: PK
+               tel: varchar
+        }
+
     }
 
     inicio: index.php{

@@ -14,7 +14,7 @@ if (isset($_GET["query"])){
 
 }else echo "error01";
 
-//tratar la string para detectar y separar la query
+//trata la string para detectar y separar la query
 $code= false;
 $searchTerms = false;
 $result = false;
