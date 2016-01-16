@@ -15,33 +15,34 @@ if (isset($_GET["query"])){
 }else echo "error01";
 
 //tratar la string para detectar y separar la query
-$code= '';
-$searchTerms = '';
+$code= false;
+$searchTerms = false;
 $result = false;
+
+$codeExploded = explode(' ',$query);
 
     //en caso de que tenga código
     if(substr($query,0,1) == ':'){
 
-        $codeExploded = explode(' ',$query);
-
         $code = $codeExploded[0];
 
-        $searchTerms = array_shift($codeExploded);
+        array_shift($codeExploded);
+
+    }else{
+        $code = false;
     }
 
 
-function retrieveData(){
-    global $query;
+
+function printData(){
+
     global $code;
-
-    //¿sería mejor incluirla en la clase de base de datos?
-    //insertar validacion de llegada
-
-
+    global $codeExploded;
 
     $searchClient = new dbConnection();
 
-    $response = $searchClient->search($code,$query);
+    $response = $searchClient->search($code, $codeExploded);
+
 
     print("
     <table class='table table-striped table-bordered table-hover table-condensed' >

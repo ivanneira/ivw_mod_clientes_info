@@ -29,6 +29,7 @@ class dbConnection{
         global $mongo;
         global $collection;
 
+        //cambiar búsqueda
         $searchArray  = array('name' => array('$regex'=> new MongoRegex('/'.$query.'/i')) );
 
         /*
