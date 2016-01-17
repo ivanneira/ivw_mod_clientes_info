@@ -7,33 +7,28 @@ ivw_mod_clientes_info{
     MySql database = ar_ivw_mgmt{
 
         table: client_info{
-               id_client_info: PK AI
+               id: PK AI
                name: varchar
                status: int
         }
 
-        table: code{
-               id_client_code: PK
+        table: client_code{
+               id: PK
                code: varchar
         }
 
-        table: name{
-               id_client_name: PK
-               name: varchar
-        }
-
-        table: ip{
-               id_client_ip: PK
+        table: client_ip{
+               id: PK
                ip: varchar
         }
 
-        table: address{
-               id_client_address: PK
+        table: client_address{
+               id: PK
                address: varchar
         }
 
-        table: tel{
-               id_client_tel: PK
+        table: client_tel{
+               id: PK
                tel: varchar
         }
 

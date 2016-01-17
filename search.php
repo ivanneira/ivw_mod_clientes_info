@@ -10,7 +10,6 @@ include_once 'db_class.php';
 
 if (isset($_GET["query"])){
     $query = $_GET["query"];
-    retrieveData();
 
 }else echo "error01";
 
@@ -32,16 +31,15 @@ $codeExploded = explode(' ',$query);
         $code = false;
     }
 
+    var_dump(searchQuery($code,$codeExploded));
 
-
+/*
 function printData(){
 
     global $code;
     global $codeExploded;
 
-    $searchClient = new dbConnection();
-
-    $response = $searchClient->search($code, $codeExploded);
+    $response =
 
 
     print("
@@ -93,6 +91,6 @@ function printData(){
 
 }
 
-
+*/
 
 ?>

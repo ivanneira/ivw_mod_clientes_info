@@ -8,5 +8,26 @@
 
 //datos de conexión a la base de datos
 
-$dataBaseName = "clients";
-$collectionName = "client";
+$mySqlHost = 'localhost';
+$mySqlUser = 'root';
+$mySqlPass = '';
+$mySqlDb = 'AR_IVW_mgmt';
+
+//códigos de búsqueda " : + codigo de dos letras " => "nombre de columna de base de datos";
+
+$searchCode = array(
+    ':' => false,
+    ':co' => 'code',
+    ':na' => 'name',
+    ':ip' => 'ip',
+    ':ad' => 'address',
+    ':te' => 'tel'
+);
+
+$tableName = array(
+    'code' => 'client_',
+    'name' => 'client_',
+    'ip' => 'client_',
+    'address' => 'client_',
+    'tel' => 'client_'
+);
