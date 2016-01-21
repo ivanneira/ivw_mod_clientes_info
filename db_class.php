@@ -7,40 +7,141 @@
  */
 include_once "connection.php";
 
-//cambio de base de datos por mysql
 
-try {
-    $mySqlPDO = new PDO('mysql:host=' . $mySqlHost . ';dbname=' . $mySqlDb, $mySqlUser, $mySqlPass);
-}catch (PDOException $e) {
-    echo $e->getMessage();
-}
 
-function searchQuery($code,$query){
+class db_access{
 
-    global $searchCode;
-    global $mySqlPDO;
+    public $sqlPDO;
 
-    $tableName = false;
 
-    foreach ($searchCode as $value) {
+    public function __construct(){
 
-        if(isset($searchCode[$code])){
-            $tableName = $searchCode[$code];
-        }else $tableName = false;
+        global $sqlPDO;
+        global $c_dbType;
+        global $c_host;
+        global $c_dataBase;
+        global $c_user;
+        global $c_pass;
+
+        try {
+            $sqlPDO = new PDO($c_dbType . ':host=' . $c_host . ';dbname=' . $c_dataBase, $c_user, $c_pass);
+            echo "conectado";
+        }catch (PDOException $e) {
+            echo "error de conexión";
+        }
+    }
+
+    function prepareSentence($sqlQueryString){
+
+        global $sqlPDO;
+
+        $PDOprepare = $sqlPDO->prepare($sqlQueryString);
+
+        $PDOprepare->execute();
+
+        $rows = $PDOprepare->fetchAll(PDO::FETCH_ASSOC);
+
+        return $rows;
 
     }
 
-    if ($code) {
-        //$mySqlQuery = "SELECT 'id' FROM 'client_".$code."' WHERE ".$code." LIKE '%".$query."%'";
+    function searchName($query)
+    {
 
-        var_dump($code);
-        var_dump($query);
-        return  $mySqlQuery;
+        global $sqlPDO;
+        global $t_info;
 
-    }else return false;
+        $sqlQueryString = "SELECT * FROM ".$t_info." WHERE name LIKE '%".$query."%'";
+
+        $a = new db_access;
+
+        return $a->prepareSentence($sqlQueryString);
+    }
+
 
 
 
 }
+
+/*
+
+class db_access
+{
+    function prepareSentence($sqlQueryString){
+
+        global $sqlPDO;
+
+        $PDOprepare = $sqlPDO->prepare($sqlQueryString);
+
+        $PDOprepare->execute();
+
+        $rows = $PDOprepare->fetchAll(PDO::FETCH_ASSOC);
+
+        return $rows;
+
+    }
+
+    function searchName($query)
+    {
+
+        global $sqlPDO;
+        global $t_info;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_info . "' WHERE name LIKE '%" . $query . "%'";
+
+        $a = new db_access;
+
+        return $a->prepareSentence($sqlQueryString);
+    }
+
+    function searchStatus($query)
+    {
+
+        global $sqlPDO;
+        global $t_info;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_info . "' WHERE status LIKE '%" . $query . "%'";
+
+        return prepareSentence($sqlQueryString);
+    }
+
+    function searchCode($query)
+    {
+
+        global $sqlPDO;
+        global $t_code;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_code . "' WHERE code LIKE '%" . $query . "%'";
+
+        return prepareSentence($sqlQueryString);
+
+
+    }
+
+    function searchIp($query)
+    {
+
+        global $sqlPDO;
+        global $t_ip;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_ip . "' WHERE ip LIKE '%" . $query . "%'";
+
+        return prepareSentence($sqlQueryString);
+
+    }
+
+    function searchAdress($query)
+    {
+
+        global $sqlPDO;
+        global $t_address;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_address . "' WHERE address LIKE '%" . $query . "%'";
+
+        return prepareSentence($sqlQueryString);
+    }
+}
+*/
+
 
 ?>
