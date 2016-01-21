@@ -25,21 +25,55 @@ $codeExploded = explode(' ',$query);
 
         $code = $codeExploded[0];
 
-        array_shift($codeExploded);
+        $stringQuery = array_shift($codeExploded);
+
 
     }else{
         $code = false;
+        $stringQuery = $query;
     }
 
-    var_dump(searchQuery($code,$codeExploded));
 
-/*
-function printData(){
 
-    global $code;
-    global $codeExploded;
+    function searchQuery($code,$searchQuery){
 
-    $response =
+        $dbConnection = new db_access();
+        $result = false;
+
+        //en caso que tenga código
+        if($code){
+
+            switch($code){
+                case ':na':
+                    $result = $dbConnection->getName($searchQuery);
+                    break;
+                case ':co':
+                    $result = $dbConnection->getCode($searchQuery);
+                    break;
+                case ':ip':
+                    $result = $dbConnection->getIp($searchQuery);
+                    break;
+                case ':ad':
+                    $result = $dbConnection->getAddress($searchQuery);
+                    break;
+                default:
+                    $result = false;
+            }
+
+        //en caso que NO tenga código
+        }else{
+            $result = array_merge($dbConnection->getName($searchQuery),
+                                    $dbConnection->getIp($searchQuery),
+                                    $dbConnection->getAddress($searchQuery),
+                                    $dbConnection->getCode($searchQuery)
+                                );
+        }
+
+        return $result;
+    }
+    //hacer que devuelva un id y no los rows, y que los rows los devuelva una función
+
+    $response = searchQuery($code,$stringQuery);
 
 
     print("
@@ -66,8 +100,6 @@ function printData(){
             print("<td>".$document['code'] ."</td>");
             print("<td>".$document['name'] ."</td>");
             print("<td>".$document['ip'] ."</td>");
-            print("<td>".$document['address']['street'] ."</td>");
-            print("<td>".$document['tel'] ."</td>");
 
             print("</tr>");
 
@@ -78,7 +110,7 @@ function printData(){
 
 
 
-    }catch(MongoCursorException $e){
+    }catch(Exception $e){
         echo "error03";
         var_dump($e);
     }
@@ -89,8 +121,7 @@ function printData(){
         </table>
     ");
 
-}
 
-*/
+
 
 ?>

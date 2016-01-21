@@ -45,10 +45,9 @@ class db_access{
 
     }
 
-    function searchName($query)
+    function getName($query)
     {
 
-        global $sqlPDO;
         global $t_info;
 
         $sqlQueryString = "SELECT * FROM ".$t_info." WHERE name LIKE '%".$query."%'";
@@ -58,7 +57,56 @@ class db_access{
         return $a->prepareSentence($sqlQueryString);
     }
 
+    function gatStatus($query)
+    {
 
+        global $t_info;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_info . "' WHERE status LIKE '%" . $query . "%'";
+
+        return prepareSentence($sqlQueryString);
+    }
+
+    function getCode($query)
+    {
+
+        global $t_code;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_code . "' WHERE code LIKE '%" . $query . "%'";
+
+        $a = new db_access;
+
+        return $a->prepareSentence($sqlQueryString);
+
+
+    }
+
+    function getIp($query)
+    {
+
+        global $t_ip;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_ip . "' WHERE ip LIKE '%" . $query . "%'";
+
+        $a = new db_access;
+
+        return $a->prepareSentence($sqlQueryString);
+
+    }
+
+    function getAddress($query)
+    {
+
+        global $t_address;
+
+        $sqlQueryString = "SELECT * FROM '" . $t_address . "' WHERE address LIKE '%" . $query . "%'";
+
+        $a = new db_access;
+
+        return $a->prepareSentence($sqlQueryString);
+    }
+
+    //hacer una función que reciba un id y que devuelva los datos combinando las tablas
 
 
 }
